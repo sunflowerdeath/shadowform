@@ -1,0 +1,93 @@
+.button {
+	font-size: 16px;
+	border-radius: 5px;
+	height: 35px;
+	color: white;
+	background: rgba(0,128,255);
+	padding: 5px 10px;
+	box-sizing: border-box;
+	border: none;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.button:hover {
+	background: rgba(0,100,200);
+}
+
+.button[disabled] {
+	background: #ccc;
+	cursor: default;
+}
+
+.button:focus {
+	box-shadow: 0 0 0 2px rgba(0,128,255,.25);
+	outline: none;
+}
+
+.field {
+	position: relative;
+	width: 200px;
+	margin-bottom: 10px;
+}
+
+.input {
+	width: 100%;
+	border-radius: 3px;
+	border: 1px solid #999;
+	height: 30px;
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+.input:focus {
+	border-color: rgb(0,128,255);
+	box-shadow: 0 0 0 2px rgba(0,128,255,.25);
+	outline: none;
+}
+
+.input--invalid {
+	border-color: red
+}
+
+.input--invalid:focus {
+	border-color: red;
+	box-shadow: 0 0 0 2px rgba(255,0,0,.25);
+}
+
+@keyframes spinner-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	top: 7px;
+	right: 7px;
+	border-radius: 50%;
+	border: 2px solid #999;
+	border-top-color: white;
+	box-sizing: border-box;
+	animation: spinner-animation 1s infinite linear;
+}
+
+.clear {
+	position: absolute;
+	cursor: pointer;
+	width: 24px;
+	height: 24px;
+	background: url('./Field/clear.svg');
+	top: 3px;
+	right: 3px;
+}
+
+.error {
+	font-size: 14px;
+	color: red;
+}

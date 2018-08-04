@@ -1,0 +1,22 @@
+{
+  "name": "shadowform-docs",
+  "version": "0.0.1",
+  "description": "Documentation for shadowform",
+  "private": true,
+  "scripts": {
+    "start": "gnoll start",
+    "build": "gnoll build"
+  },
+  "dependencies": {
+    "minibook": "^0.5.0",
+    "shadowform": "*",
+    "shadowform-examples": "*"
+  },
+  "devDependencies": {
+    "@babel/polyfill": "^7.0.0-beta.46",
+    "markdown-it-table-of-contents": "^0.3.3",
+    "minibook-loader": "^0.4.2"
+  },
+  "author": "sunflowerdeath",
+  "license": "Unlicense"
+}
