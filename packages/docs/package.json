@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "start": "gnoll start",
-    "build": "gnoll build",
-    "deploy": "gnoll build && push-dir --dir=build --branch=gh-pages"
+    "build": "gnoll build --assets-caching",
+    "deploy": "npm run build && push-dir --dir=build --branch=gh-pages"
   },
   "dependencies": {
     "minibook": "^0.5.2",

@@ -5,8 +5,12 @@ const stylesConfig = require('gnoll-styles')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+const PRODUCTION = process.env.NODE_ENV === 'production'
+
 module.exports = merge(baseConfig, stylesConfig, {
-	// entry: './src/index.js',
+	output: {
+		publicPath: PRODUCTION ? 'https://sunflowerdeath.github.io/shadowform/' : '/'
+	},
 	plugins: [
 		new HtmlWebpackPlugin({ template: './src/index.html' }),
 		new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/)
