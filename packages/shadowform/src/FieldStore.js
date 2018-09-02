@@ -1,5 +1,5 @@
 import NanoEvents from 'nanoevents'
-import { observable, action, runInAction, untracked } from 'mobx'
+import { observable, action, untracked } from 'mobx'
 import debounce from 'lodash.debounce'
 
 import cancellable, { CancelError } from './utils/cancellable'
@@ -52,7 +52,7 @@ class FieldStore {
 
 	getError(type, validation) {
 		const { config, normalizedValue } = this
-		let error =
+		const error =
 			type === 'required'
 				? config.requiredError
 				: config.validations[validation].error
@@ -91,7 +91,7 @@ class FieldStore {
 
 	@action
 	validate() {
-		const { config, value, normalizedValue, isEmpty, form } = this
+		const { config, normalizedValue, isEmpty, form } = this
 
 		this.cancelValidation()
 
@@ -108,8 +108,8 @@ class FieldStore {
 		}
 
 		if (config.validations) {
-			const syncValidations = Object.entries(config.validations).filter(
-				([name, validation]) => !validation.isAsync
+			const syncValidations = Object.values(config.validations).filter(
+				validation => !validation.isAsync
 			)
 			for (const [name, validation] of syncValidations) {
 				const isValid = validation.validate(
@@ -129,7 +129,9 @@ class FieldStore {
 			}
 
 			if (
-				Object.values(config.validations).some(validation => validation.isAsync)
+				Object.values(config.validations).some(
+					validation => validation.isAsync
+				)
 			) {
 				this.isValidating = true
 				this.debouncedAsyncValidate()
@@ -145,8 +147,8 @@ class FieldStore {
 	@action
 	async asyncValidate() {
 		const { config, normalizedValue, form } = this
-		const asyncValidations = Object.entries(config.validations).filter(
-			([name, validation]) => validation.isAsync
+		const asyncValidations = Object.values(config.validations).filter(
+			validation => validation.isAsync
 		)
 		for (const [name, validation] of asyncValidations) {
 			this.currentValidation = cancellable(
@@ -154,6 +156,7 @@ class FieldStore {
 			)
 			let isValid
 			try {
+				// eslint-disable-next-line no-await-in-loop
 				isValid = await this.currentValidation
 			} catch (error) {
 				if (error instanceof CancelError) return

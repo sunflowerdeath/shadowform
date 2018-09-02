@@ -49,11 +49,11 @@ tabs: 4
 
 ### Field components
 
-Also, you can create custom field components for different types of inputs
-and reuse them in your forms.
+You can create custom field components for different types of inputs
+and reuse them in different forms.
 
 ```@source
-file: '../examples/Field/simple.js'
+file: '../examples/Field/SimpleField.js'
 tabs: 4
 ```
 

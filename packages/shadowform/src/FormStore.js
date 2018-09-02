@@ -1,4 +1,4 @@
-import { observable, computed, action } from 'mobx'
+import { computed, action } from 'mobx'
 
 import FieldStore from './FieldStore'
 

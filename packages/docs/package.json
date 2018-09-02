@@ -5,17 +5,23 @@
   "private": true,
   "scripts": {
     "start": "gnoll start",
-    "build": "gnoll build"
+    "build": "gnoll build",
+    "deploy": "push-dir --dir=build --branch=gh-pages"
   },
   "dependencies": {
-    "minibook": "^0.5.0",
-    "shadowform": "*",
-    "shadowform-examples": "*"
+    "minibook": "^0.5.2",
+    "moment": "^2.22.2",
+    "shadowform": "*"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
     "@babel/polyfill": "^7.0.0-beta.46",
-    "markdown-it-table-of-contents": "^0.3.3",
-    "minibook-loader": "^0.4.2"
+    "connect-history-api-fallback": "^1.5.0",
+    "gnoll": "0.6.0-5",
+    "koa-connect": "^2.0.1",
+    "minimark-loader": "^0.5.2",
+    "push-dir": "^0.4.1"
   },
   "author": "sunflowerdeath",
   "license": "Unlicense"

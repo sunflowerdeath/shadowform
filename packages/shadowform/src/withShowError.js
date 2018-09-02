@@ -20,7 +20,7 @@ const shouldShowError = (props, state) => {
 
 	const showMode = do {
 		if (error.type === 'external') {
-			'onChange'
+			;('onChange')
 		} else if (error.type === 'required') {
 			showRequiredError
 		} else if (typeof showValidationErrors === 'object') {
@@ -48,13 +48,15 @@ const withShowError = Field =>
 
 		static propTypes = {
 			field: PropTypes.object.isRequired,
-			component: PropTypes.func,
-			render: PropTypes.func,
+			// eslint-disable-next-line react/no-unused-prop-types
 			showRequiredError: PropTypes.oneOf(SHOW_ERROR_TYPES),
+			// eslint-disable-next-line react/no-unused-prop-types
 			showValidationErrors: PropTypes.oneOfType([
 				PropTypes.oneOf(SHOW_ERROR_TYPES),
 				PropTypes.objectOf(PropTypes.oneOf(SHOW_ERROR_TYPES))
-			])
+			]),
+			onBlur: PropTypes.func,
+			onFocus: PropTypes.func
 		}
 
 		static defaultProps = {
@@ -93,11 +95,11 @@ const withShowError = Field =>
 				// updated in validate handler
 				this.state.isTouched = false
 			})
-			this.unbindValidate = field.on('validate', () => {
-				this.setState({
-					showError: shouldShowError(this.props, this.state)
-				})
-			})
+			this.unbindValidate = field.on('validate', () =>
+				this.setState(state => ({
+					showError: shouldShowError(this.props, state)
+				}))
+			)
 		}
 
 		componentWillUnmount() {
@@ -107,18 +109,18 @@ const withShowError = Field =>
 
 		onFocus() {
 			this.setState({ isFocused: true, isTouched: true })
-			if (this.props.onFocus) this.props.onFocus()
+			this.props.onFocus?.()
 		}
 
 		onBlur() {
-			this.setState({
+			this.setState(state => ({
 				isFocused: false,
 				showError: shouldShowError(this.props, {
-					...this.state,
+					...state,
 					isFocused: false
 				})
-			})
-			if (this.props.onBlur) this.props.onBlur()
+			}))
+			this.props.onBlur?.()
 		}
 
 		render() {

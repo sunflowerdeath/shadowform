@@ -33,7 +33,6 @@ describe('FieldStore', () => {
 		assert.strictEqual(field.error, undefined)
 	})
 
-
 	it('empty field', () => {
 		const validate = spy(VALIDATE)
 		const field = new FieldStore({
@@ -88,7 +87,6 @@ describe('FieldStore', () => {
 			value: VALIDATION_ERROR
 		})
 	})
-
 
 	it('normalize', () => {
 		const validate = spy(VALIDATE)

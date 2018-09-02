@@ -1,7 +1,9 @@
 import IntroductionStory from './Introduction.md'
+import ConfiguringErrorDisplayStory from './ConfiguringErrorDisplay.md'
 import SubmitValidationStory from './SubmitValidation.md'
 import AsyncValidationStory from './AsyncValidation.md'
-import ConfiguringErrorDisplayStory from './ConfiguringErrorDisplay.md'
+import ConnectedFieldsStory from './ConnectedFields.md'
+import NormalizationStory from './Normalization.md'
 
 export default {
 	name: 'Guides',
@@ -24,8 +26,11 @@ export default {
 		},
 		'value-normalization': {
 			name: 'Values normalization',
-			render: () => 'TODO'
+			markdown: NormalizationStory
 		},
-		'cross-validation': { name: 'Cross Validation', render: () => 'TODO' }
+		'cross-validation': {
+			name: 'Connected Fields',
+			markdown: ConnectedFieldsStory
+		}
 	}
 }

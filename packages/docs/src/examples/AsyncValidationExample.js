@@ -36,7 +36,7 @@ class AsyncValidationExample extends Component {
 	}
 
 	render() {
-		const form = this.form
+		const { form } = this
 		return (
 			<div>
 				<label style={{ marginBottom: 5 }}>Email:</label>
@@ -48,7 +48,9 @@ class AsyncValidationExample extends Component {
 				<button
 					className="button"
 					disabled={!form.isValid}
-					onClick={() => alert(`Submitted:\n${JSON.stringify(form.values)}`)}
+					onClick={() =>
+						alert(`Submitted:\n${JSON.stringify(form.values)}`)
+					}
 				>
 					Submit
 				</button>

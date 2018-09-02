@@ -1,6 +1,6 @@
 # API / FormStore
 
-Mobx store that stores several fields.
+Mobx store that stores multiple fields.
 
 **Table of contents:**
 

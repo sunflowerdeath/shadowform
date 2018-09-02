@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { observable } from 'mobx-react'
+import { observer } from 'mobx-react'
 import { FormStore } from 'shadowform'
+
+import Field from './Field'
 
 const createForm = () => {
 	const form = new FormStore({
@@ -26,17 +28,21 @@ const createForm = () => {
 }
 
 @observer
-class ConnectendFieldsExample extends Component {
+class ConnectedFieldsExample extends Component {
 	constructor() {
 		super()
 		this.form = createForm()
 	}
 
 	render() {
+		const { form } = this
+
 		return (
 			<div>
-				<label style={{ marginBottom: 5 }}>Email:</label>
+				<label style={{ marginBottom: 5 }}>Password:</label>
 				<Field field={form.fields.password} showRequiredError="onBlurTouched" />
+
+				<label style={{ marginBottom: 5 }}>Password confirmation:</label>
 				<Field
 					field={form.fields.confirmation}
 					showRequiredError="onBlurTouched"
@@ -57,4 +63,4 @@ class ConnectendFieldsExample extends Component {
 	}
 }
 
-export default ConnectendFieldsExample
+export default ConnectedFieldsExample

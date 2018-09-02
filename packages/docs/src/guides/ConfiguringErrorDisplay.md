@@ -10,7 +10,8 @@ imports:
 
 Shadowform uses separation of form's state into logical and displayed parts.
 Logical state is stored in Mobx and always corresponds to the current values.
-Displayed state exists in component and allows to control displaying error messages.
+Displayed state exists in component and allows to control displaying 
+error messages.
 
 For example, empty required field should not show error initally,
 only if user has missed this field.
@@ -37,16 +38,22 @@ Possible values are:
 Also, you can configure display of each error type separately
 by passing an object to `showValidationErrors` prop.
 
-Wrapped component recieves following props:
+Wrapped field component recieves following props:
 
 - `showError` &mdash; Whether the field should show current error.
 - `onFocus`, `onBlur` &mdash; Field should call these functions to update the state.
 
-Another important thing is `withShowError` decorators.
-It allows to configure displaying different errors.
-It adds prop `showError` whether the field should display current error.
-
 ## Example
+
+In this example, form has one required email field.
+Required error should not be shown initially.
+Email format error is not shown during the input process,
+but only if you leave the field with invalid email.
+But if you enter a space, the error will be displayed immediately.
+
+```@render
+<WithShowErrorExample />
+```
 
 This is how field component uses `withShowError`:
 
@@ -62,8 +69,3 @@ file: '../examples/WithShowErrorExample.js'
 tabs: 4
 ```
 
-Result:
-
-```@render
-<WithShowErrorExample />
-```

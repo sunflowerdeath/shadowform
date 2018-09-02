@@ -76,13 +76,13 @@ These props are passed to the inner component.
   <br/>
   Type: `function`
   
-  Call this function when field ?? focus.
+  Component need to call this function when field gets focus.
 
 - **onBlur**
   <br/>
   Type: `function`
   
-  Call this function when field ?? focus.
+  Component need to call this function when field loses focus.
 
 - **isFocused**
   <br/>

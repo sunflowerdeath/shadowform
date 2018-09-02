@@ -1,12 +1,16 @@
+const webpack = require('webpack')
 const baseConfig = require('gnoll/config/webpack')
 const babelConfig = require('gnoll/config/babel')
-const sass = require('gnoll-sass')
+const stylesConfig = require('gnoll-styles')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-module.exports = merge(baseConfig, sass({ cssModules: false }), {
-	entry: './src/index.js',
-	plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
+module.exports = merge(baseConfig, stylesConfig, {
+	// entry: './src/index.js',
+	plugins: [
+		new HtmlWebpackPlugin({ template: './src/index.html' }),
+		new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/)
+	],
 	module: {
 		rules: [
 			{
@@ -21,9 +25,8 @@ module.exports = merge(baseConfig, sass({ cssModules: false }), {
 			}
 		]
 	},
-	devServer: {
+	serve: {
 		port: 1337,
-		historyApiFallback: true,
 		host: '0.0.0.0'
 	}
 })

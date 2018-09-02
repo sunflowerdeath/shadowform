@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { observable } from 'mobx-react'
+import { observer } from 'mobx-react'
 import { FormStore } from 'shadowform'
 import moment from 'moment'
+
+import Field from './Field'
 
 const createForm = () =>
 	new FormStore({
@@ -9,15 +11,15 @@ const createForm = () =>
 			date: {
 				isRequired: true,
 				requiredError: 'This field is required',
-				normalize: value => moment.parse(value, 'dd/mm/yyyy'),
+				normalize: value => moment(value, 'DD.MM.YYYY', true),
 				validations: {
 					format: {
 						validate: value => value.isValid(),
 						error: 'Invalid date'
 					},
 					inPast: {
-						value: value => value.isBefore(moment.now()),
-						error: 'Date in future'
+						validate: value => value.isBefore(moment.now()),
+						error: 'Date should not be in future'
 					}
 				}
 			}
@@ -25,16 +27,18 @@ const createForm = () =>
 	})
 
 @observer
-class NormalizeExample extends Component {
+class NormalizationExample extends Component {
 	constructor() {
 		super()
 		this.form = createForm()
 	}
 
 	render() {
+		const { form } = this
+
 		return (
 			<div>
-				<label style={{ marginBottom: 5 }}>Email:</label>
+				<label style={{ marginBottom: 5 }}>Date in format DD.MM.YYYY:</label>
 				<Field
 					field={form.fields.date}
 					showRequiredError="onBlurTouched"
@@ -55,4 +59,4 @@ class NormalizeExample extends Component {
 	}
 }
 
-export default NormalizeExample
+export default NormalizationExample
