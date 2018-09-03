@@ -9,7 +9,7 @@
     "deploy": "npm run build && push-dir --dir=build --branch=gh-pages"
   },
   "dependencies": {
-    "minibook": "^0.5.2",
+    "minibook": "^0.5.3",
     "moment": "^2.22.2",
     "shadowform": "*"
   },

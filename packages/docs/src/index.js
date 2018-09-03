@@ -7,12 +7,18 @@ import 'minibook/lib/styles.css'
 import ApiSection from './api'
 import GuidesSection from './guides'
 
+const PRODUCTION = process.env.NODE_ENV === 'production'
+
 const sections = {
 	guides: GuidesSection,
 	api: ApiSection
 }
 
 ReactDOM.render(
-	<MiniBook title="Shadowform" sections={sections} />,
+	<MiniBook
+		basename={PRODUCTION ? '/shadowform/' : ''}
+		title="Shadowform"
+		sections={sections}
+	/>,
 	document.querySelector('#root')
 )
