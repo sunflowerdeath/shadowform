@@ -24,6 +24,8 @@ file: '../examples/AsyncValidationExample.js'
 tabs: 4
 from: 7
 to: 29
+lang: 'jsx'
+highlightLines: '22'
 ```
 
 [View example on github](https://github.com/sunflowerdeath/shadowform/tree/master/packages/docs/src/examples/AsyncValidationExample.js)

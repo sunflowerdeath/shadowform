@@ -21,7 +21,9 @@ Validation functions recieve normalized value instead of original.
 file: '../examples/NormalizationExample.js'
 tabs: 4
 from: 8
-to: 30
+to: 28
+lang: 'jsx'
+highlightLines: '14'
 ```
 
 [View example on github](https://github.com/sunflowerdeath/shadowform/tree/master/packages/docs/src/examples/NormalizationExample.js)

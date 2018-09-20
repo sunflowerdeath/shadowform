@@ -60,6 +60,8 @@ This is how field component uses `withShowError`:
 ```@source
 file: '../examples/Field/index.js'
 tabs: 4
+lang: 'jsx'
+highlightLines: '23'
 ```
 
 This is how you can configure errors:
@@ -67,5 +69,7 @@ This is how you can configure errors:
 ```@source
 file: '../examples/WithShowErrorExample.js'
 tabs: 4
+lang: 'jsx'
+highlightLines: 21-22
 ```
 

@@ -28,6 +28,7 @@ Each field can have validations and be required or optional.
 ```@source
 file: '../examples/createForm.js'
 tabs: 4
+lang: 'jsx'
 ```
 
 ### Rendering form
@@ -39,6 +40,7 @@ To update value you need to call method `change()`.
 ```@source
 file: '../examples/MinimalExample.js'
 tabs: 4
+lang: 'jsx'
 ```
 
 ### Result
@@ -55,6 +57,7 @@ and reuse them in different forms.
 ```@source
 file: '../examples/Field/SimpleField.js'
 tabs: 4
+lang: 'jsx'
 ```
 
 This is minimal example of usage. In next sections you can learn how to

@@ -4,18 +4,18 @@
   "description": "Documentation for shadowform",
   "private": true,
   "scripts": {
-    "start": "gnoll start",
-    "build": "gnoll build --assets-caching",
+    "start": "gnoll start -e ./src/index.js",
+    "build": "gnoll build -e ./src/index.js --assets-caching",
     "deploy": "npm run build && push-dir --dir=build --branch=gh-pages"
   },
   "dependencies": {
-    "minibook": "^0.5.3",
+    "minibook": "^0.6.0",
     "moment": "^2.22.2",
     "shadowform": "*"
   },
   "devDependencies": {
     "@babel/polyfill": "^7.0.0",
-    "minimark-loader": "^0.5.2",
+    "minimark-loader": "^0.6.0",
     "push-dir": "^0.4.1"
   },
   "author": "sunflowerdeath",

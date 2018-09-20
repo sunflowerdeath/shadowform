@@ -23,6 +23,8 @@ file: '../examples/SubmitValidationExample.js'
 tabs: 4
 from: 7
 to: 42
+lang: 'jsx'
+highlightLines: '37'
 ```
 
 [View example on github](https://github.com/sunflowerdeath/shadowform/tree/master/packages/docs/src/examples/SubmitValidationExample.js)

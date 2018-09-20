@@ -21,6 +21,8 @@ file: '../examples/ConnectedFieldsExample.js'
 tabs: 4
 from: 7
 to: 29
+lang: 'jsx'
+highlightLines: '19, 26'
 ```
 
 [View example on github](https://github.com/sunflowerdeath/shadowform/tree/master/packages/docs/src/examples/ConnectedFieldsExample.js)
