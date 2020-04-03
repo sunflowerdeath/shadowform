@@ -1,6 +1,6 @@
 {
   "name": "shadowform-docs",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Documentation for shadowform",
   "private": true,
   "scripts": {
@@ -11,7 +11,7 @@
   "dependencies": {
     "minibook": "^0.6.0",
     "moment": "^2.22.2",
-    "shadowform": "^0.1.1"
+    "shadowform": "^0.2.0"
   },
   "devDependencies": {
     "@babel/polyfill": "^7.0.0",
