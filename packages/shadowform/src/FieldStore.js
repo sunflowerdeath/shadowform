@@ -108,8 +108,8 @@ class FieldStore {
 		}
 
 		if (config.validations) {
-			const syncValidations = Object.values(config.validations).filter(
-				validation => !validation.isAsync
+			const syncValidations = Object.entries(config.validations).filter(
+				([_, validation]) => !validation.isAsync
 			)
 			for (const [name, validation] of syncValidations) {
 				const isValid = validation.validate(
@@ -147,8 +147,8 @@ class FieldStore {
 	@action
 	async asyncValidate() {
 		const { config, normalizedValue, form } = this
-		const asyncValidations = Object.values(config.validations).filter(
-			validation => validation.isAsync
+		const asyncValidations = Object.entries(config.validations).filter(
+			([name, validation]) => validation.isAsync
 		)
 		for (const [name, validation] of asyncValidations) {
 			this.currentValidation = cancellable(
