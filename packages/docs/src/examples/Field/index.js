@@ -1,9 +1,17 @@
 import React from 'react'
-import { observer } from 'mobx-react'
-import { withShowError } from 'shadowform'
+import { observer } from 'mobx-react-lite'
+import { useShowError } from 'shadowform'
 
-const Field = props => {
-	const { showError, onFocus, onBlur, field } = props
+const Field = ({
+	field,
+	showRequiredError = 'onChange',
+	showValidationErrors = 'onChange'
+}) => {
+	const { showError, onFocus, onBlur } = useShowError({
+		field,
+		showRequiredError,
+		showValidationErrors
+	})
 	const { value, isDisabled, isEmpty, isValidating, isValid, error } = field
 	return (
 		<div className="field">
@@ -25,4 +33,4 @@ const Field = props => {
 	)
 }
 
-export default withShowError(observer(Field))
+export default observer(Field)

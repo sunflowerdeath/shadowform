@@ -1,9 +1,13 @@
-import { computed, action } from 'mobx'
+import { makeAutoObservable } from 'mobx'
 
 import FieldStore from './FieldStore'
 
 class FormStore {
+	fields = {}
+	initialValues = {}
+
 	constructor({ fields, initialValues }) {
+		makeAutoObservable(this)
 		this.fields = {}
 		this.initialValues = initialValues || {}
 		for (const [name, options] of Object.entries(fields)) {
@@ -16,7 +20,6 @@ class FormStore {
 		}
 	}
 
-	@computed
 	get values() {
 		const result = {}
 		for (const [name, field] of Object.entries(this.fields)) {
@@ -25,7 +28,6 @@ class FormStore {
 		return result
 	}
 
-	@computed
 	get normalizedValues() {
 		const result = {}
 		for (const [name, field] of Object.entries(this.fields)) {
@@ -34,26 +36,22 @@ class FormStore {
 		return result
 	}
 
-	@computed
 	get isValid() {
 		return Object.values(this.fields).every(
 			field => field.isDisabled || (!field.isValidating && field.isValid)
 		)
 	}
 
-	@computed
 	get isValidating() {
 		return Object.values(this.fields).some(field => field.isValidating)
 	}
 
-	@action
 	reset() {
 		for (const field of Object.values(this.fields)) {
 			field.reset()
 		}
 	}
 
-	@action
 	setErrors(errors) {
 		for (const [field, error] of Object.entries(errors)) {
 			this.fields[field].setError(error)

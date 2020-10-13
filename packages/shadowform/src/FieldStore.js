@@ -1,5 +1,5 @@
 import NanoEvents from 'nanoevents'
-import { observable, action, untracked } from 'mobx'
+import { makeAutoObservable, untracked } from 'mobx'
 import debounce from 'lodash.debounce'
 
 import cancellable, { CancelError } from './utils/cancellable'
@@ -7,13 +7,13 @@ import cancellable, { CancelError } from './utils/cancellable'
 const defaultIsEmpty = value => value === null || value === undefined || value === ''
 
 class FieldStore {
-	@observable isDisabled
-	@observable value
-	@observable isEmpty
-	@observable normalizedValue
-	@observable isValidating
-	@observable isValid
-	@observable error
+	isDisabled = false
+	value = undefined
+	isEmpty = false
+	normalizedValue = undefined
+	isValidating = false
+	isValid = false
+	error = undefined
 
 	constructor({
 		initialValue,
@@ -27,6 +27,7 @@ class FieldStore {
 		validationErrors,
 		form
 	}) {
+		makeAutoObservable(this)
 		this.form = form
 		this.initialValue = initialValue
 		this.config = {
@@ -59,21 +60,18 @@ class FieldStore {
 		return typeof error === 'function' ? error(normalizedValue) : error
 	}
 
-	@action
 	change(value) {
 		this.setValue(value)
 		this.emitter.emit('change')
 		this.validate()
 	}
 
-	@action
 	reset() {
 		this.setValue(this.initialValue)
 		this.emitter.emit('reset')
 		this.validate()
 	}
 
-	@action
 	setValue(value) {
 		const { config } = this
 		this.value = value
@@ -89,7 +87,6 @@ class FieldStore {
 		}
 	}
 
-	@action
 	validate() {
 		const { config, normalizedValue, isEmpty, form } = this
 
@@ -144,7 +141,6 @@ class FieldStore {
 		this.emitter.emit('validate')
 	}
 
-	@action
 	async asyncValidate() {
 		const { config, normalizedValue, form } = this
 		const asyncValidations = Object.entries(config.validations).filter(
@@ -184,14 +180,12 @@ class FieldStore {
 		this.emitter.emit('validate')
 	}
 
-	@action
 	setError(error) {
 		this.isValid = false
 		this.error = { type: 'external', value: error }
 		this.emitter.emit('validate')
 	}
 
-	@action
 	removeError() {
 		this.isValid = true
 		this.error = undefined

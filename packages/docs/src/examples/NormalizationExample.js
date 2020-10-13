@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { observer } from 'mobx-react'
+import React from 'react'
+import { observer, useLocalObservable } from 'mobx-react-lite'
 import { FormStore } from 'shadowform'
 import moment from 'moment'
 
@@ -26,37 +26,29 @@ const createForm = () =>
 		}
 	})
 
-@observer
-class NormalizationExample extends Component {
-	constructor() {
-		super()
-		this.form = createForm()
-	}
+const NormalizationExample = () => {
+	const form = useLocalObservable(createForm)
 
-	render() {
-		const { form } = this
-
-		return (
-			<div>
-				<label style={{ marginBottom: 5 }}>Date in format DD.MM.YYYY:</label>
-				<Field
-					field={form.fields.date}
-					showRequiredError="onBlurTouched"
-					showValidationErrors={{ format: 'onBlur', inPast: 'onChange' }}
-				/>
-				<button
-					className="button"
-					disabled={!form.isValid}
-					onClick={() => alert(`Submitted:\n${JSON.stringify(form.values)}`)}
-				>
-					Submit
-				</button>
-				<button className="button" onClick={() => form.reset()}>
-					Reset
-				</button>
-			</div>
-		)
-	}
+	return (
+		<div>
+			<label style={{ marginBottom: 5 }}>Date in format DD.MM.YYYY:</label>
+			<Field
+				field={form.fields.date}
+				showRequiredError="onBlurTouched"
+				showValidationErrors={{ format: 'onBlur', inPast: 'onChange' }}
+			/>
+			<button
+				className="button"
+				disabled={!form.isValid}
+				onClick={() => alert(`Submitted:\n${JSON.stringify(form.values)}`)}
+			>
+				Submit
+			</button>
+			<button className="button" onClick={() => form.reset()}>
+				Reset
+			</button>
+		</div>
+	)
 }
 
-export default NormalizationExample
+export default observer(NormalizationExample)

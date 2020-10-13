@@ -1,6 +1,6 @@
 ---
 imports:
-  'WithShowErrorExample': '../examples/WithShowErrorExample'
+  'UseShowErrorExample': '../examples/UseShowErrorExample'
   'styles': '../examples/styles.css'
 ---
 
@@ -21,12 +21,11 @@ Value is not valid until user enters the full value,
 but field should not show the error during the input process,
 only if the user left the value in the field incomplete.
 
-## withShowError
+## useShowError
 
-`withShowError` is a decorator that wraps field component 
-and allows to configure displaying of errors
-using props `showRequiredError` and `showValidationErrors`
+`useShowError` is a hook that helps to control diplaying the error state of the field.
 
+It is configured by two options `showRequiredError` and `showValidationError`.
 Possible values are:
 - `onChange` &mdash; Show error in any state.
 - `onBlur` &mdash; Show error when field is not focused.
@@ -38,10 +37,11 @@ Possible values are:
 Also, you can configure display of each error type separately
 by passing an object to `showValidationErrors` prop.
 
-Wrapped field component recieves following props:
+Hook returns an object with the following fields:
 
 - `showError` &mdash; Whether the field should show current error.
-- `onFocus`, `onBlur` &mdash; Field should call these functions to update the state.
+- `onFocus`, `onBlur` &mdash; Functions that you should call to update the state.
+- `isFocused`, `isTouched` &mdash; Current state of the field.
 
 ## Example
 
@@ -52,24 +52,24 @@ but only if you leave the field with invalid email.
 But if you enter a space, the error will be displayed immediately.
 
 ```@render
-<WithShowErrorExample />
+<UseShowErrorExample />
 ```
 
 This is how field component uses `withShowError`:
 
-```@source
-file: '../examples/Field/index.js'
-tabs: 4
-lang: 'jsx'
-highlightLines: '23'
-```
+<!-- ```@source -->
+<!-- file: '../examples/Field/index.js' -->
+<!-- tabs: 4 -->
+<!-- lang: 'jsx' -->
+<!-- highlightLines: '23' -->
+<!-- ``` -->
 
 This is how you can configure errors:
 
-```@source
-file: '../examples/WithShowErrorExample.js'
-tabs: 4
-lang: 'jsx'
-highlightLines: 21-22
-```
+<!-- ```@source -->
+<!-- file: '../examples/WithShowErrorExample.js' -->
+<!-- tabs: 4 -->
+<!-- lang: 'jsx' -->
+<!-- highlightLines: 21-22 -->
+<!-- ``` -->
 

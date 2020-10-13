@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { observer } from 'mobx-react'
+import React from 'react'
+import { observer, useLocalObservable } from 'mobx-react-lite'
 import { FormStore } from 'shadowform'
 
 import Field from './Field'
@@ -28,38 +28,28 @@ const createForm = () =>
 		}
 	})
 
-@observer
-class AsyncValidationExample extends Component {
-	constructor() {
-		super()
-		this.form = createForm()
-	}
-
-	render() {
-		const { form } = this
-		return (
-			<div>
-				<label style={{ marginBottom: 5 }}>Email:</label>
-				<Field
-					field={form.fields.email}
-					showRequiredError="onBlurTouched"
-					showValidationErrors={{ email: 'onBlur', unique: 'onChange' }}
-				/>
-				<button
-					className="button"
-					disabled={!form.isValid}
-					onClick={() =>
-						alert(`Submitted:\n${JSON.stringify(form.values)}`)
-					}
-				>
-					Submit
-				</button>
-				<button className="button" onClick={() => form.reset()}>
-					Reset
-				</button>
-			</div>
-		)
-	}
+const AsyncValidationExample = () => {
+	const form = useLocalObservable(createForm)
+	return (
+		<div>
+			<label style={{ marginBottom: 5 }}>Email:</label>
+			<Field
+				field={form.fields.email}
+				showRequiredError="onBlurTouched"
+				showValidationErrors={{ email: 'onBlur', unique: 'onChange' }}
+			/>
+			<button
+				className="button"
+				disabled={!form.isValid}
+				onClick={() => alert(`Submitted:\n${JSON.stringify(form.values)}`)}
+			>
+				Submit
+			</button>
+			<button className="button" onClick={() => form.reset()}>
+				Reset
+			</button>
+		</div>
+	)
 }
 
-export default AsyncValidationExample
+export default observer(AsyncValidationExample)

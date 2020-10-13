@@ -10,17 +10,18 @@ module.exports = merge(baseConfig, stylesConfig, {
 	output: {
 		publicPath: PRODUCTION ? 'https://sunflowerdeath.github.io/shadowform/' : '/'
 	},
-	plugins: [
-		new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/)
-	],
+	plugins: [new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/)],
 	module: {
 		rules: [
 			{
 				test: /\.md$/,
 				use: [
-					{ loader: 'babel-loader', options: babelConfig },
 					{
-						loader: 'minimark-loader',
+						loader: require.resolve('babel-loader'),
+						options: babelConfig
+					},
+					{
+						loader: require.resolve('minimark-loader'),
 						options: require('minibook/minimark-preset')
 					}
 				]

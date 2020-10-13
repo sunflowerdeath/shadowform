@@ -45,9 +45,11 @@ lang: 'jsx'
 
 ### Result
 
+wtf
 ```@render
 <MinimalExample />
 ```
+wtf
 
 ### Field components
 

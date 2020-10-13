@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { observer } from 'mobx-react'
+import React from 'react'
+import { observer, useLocalObservable } from 'mobx-react-lite'
 import { FormStore } from 'shadowform'
 
 import Field from './Field'
@@ -27,40 +27,31 @@ const createForm = () => {
 	return form
 }
 
-@observer
-class ConnectedFieldsExample extends Component {
-	constructor() {
-		super()
-		this.form = createForm()
-	}
+const ConnectedFieldsExample = () => {
+	const form = useLocalObservable(createForm)
+	return (
+		<div>
+			<label style={{ marginBottom: 5 }}>Password:</label>
+			<Field field={form.fields.password} showRequiredError="onBlurTouched" />
 
-	render() {
-		const { form } = this
-
-		return (
-			<div>
-				<label style={{ marginBottom: 5 }}>Password:</label>
-				<Field field={form.fields.password} showRequiredError="onBlurTouched" />
-
-				<label style={{ marginBottom: 5 }}>Password confirmation:</label>
-				<Field
-					field={form.fields.confirmation}
-					showRequiredError="onBlurTouched"
-					showValidationErrors={{ matchPassword: 'onBlur' }}
-				/>
-				<button
-					className="button"
-					disabled={!form.isValid}
-					onClick={() => alert(`Submitted:\n${JSON.stringify(form.values)}`)}
-				>
-					Submit
-				</button>
-				<button className="button" onClick={() => form.reset()}>
-					Reset
-				</button>
-			</div>
-		)
-	}
+			<label style={{ marginBottom: 5 }}>Password confirmation:</label>
+			<Field
+				field={form.fields.confirmation}
+				showRequiredError="onBlurTouched"
+				showValidationErrors={{ matchPassword: 'onBlur' }}
+			/>
+			<button
+				className="button"
+				disabled={!form.isValid}
+				onClick={() => alert(`Submitted:\n${JSON.stringify(form.values)}`)}
+			>
+				Submit
+			</button>
+			<button className="button" onClick={() => form.reset()}>
+				Reset
+			</button>
+		</div>
+	)
 }
 
-export default ConnectedFieldsExample
+export default observer(ConnectedFieldsExample)

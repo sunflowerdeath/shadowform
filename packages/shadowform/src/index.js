@@ -1,5 +1,5 @@
 import FormStore from './FormStore'
 import FieldStore from './FieldStore'
-import withShowError from './withShowError'
+import useShowError from './useShowError'
 
-export { FormStore, FieldStore, withShowError }
+export { FormStore, FieldStore, useShowError }

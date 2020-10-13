@@ -1,53 +1,43 @@
-import React, { Component } from 'react'
-import { observer } from 'mobx-react'
+import React, { useState } from 'react'
+import { observer, useLocalObservable } from 'mobx-react-lite'
 
-import createFrom from './createForm'
+import createForm from './createForm'
 import Field from '../Field'
 
-@observer
-class SubmitButtonExample extends Component {
-	constructor() {
-		super()
-		this.form = createForm()
-	}
+const SubmitButtonExample = () => {
+	const form = useLocalObservable(createForm)
+	const [isSubmitted, setIsSubmitted] = useState(false)
 
-	state = {
-		isSubmitted: false
-	}
-
-	onSubmit() {
-		this.setState({ isSubmitted: true })
-		if (!this.props.form.isValid) {
+	const onSubmit = () => {
+		setIsSubmitted(true)
+		if (!form.isValid) {
 			alert('Fix errors!')
 		} else {
 			alert('Submitted!\n' + JSON.stringify(form.values))
 		}
 	}
 
-	onReset() {
-		this.form.reset()
-		this.setState({ isSubmitted: false })
+	const onReset = () => {
+		form.reset()
+		setIsSubmitted(false)
 	}
 
-	render() {
-		const { form } = this.form
-		return (
-			<div>
-				<label style={{ marginBottom: 5 }}>Email:</label>
-				<Field
-					field={form.fields.email}
-					showRequiredError={this.state.isSubmitted ? 'onBlur' : 'off'}
-					showValidationErrors={{ noSpaces: 'onChange', email: 'onBlur' }}
-				/>
-				<button className="button" onClick={this.onSubmit.bind(this)}>
-					Submit
-				</button>
-				<button className="button" onClick={this.onReset.bind(this)}>
-					Reset
-				</button>
-			</div>
-		)
-	}
+	return (
+		<div>
+			<label style={{ marginBottom: 5 }}>Email:</label>
+			<Field
+				field={form.fields.email}
+				showRequiredError={isSubmitted ? 'onBlur' : 'off'}
+				showValidationErrors={{ noSpaces: 'onChange', email: 'onBlur' }}
+			/>
+			<button className="button" onClick={onSubmit}>
+				Submit
+			</button>
+			<button className="button" onClick={onReset}>
+				Reset
+			</button>
+		</div>
+	)
 }
 
-export default SubmitButtonExample
+export default observer(SubmitButtonExample)
