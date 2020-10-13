@@ -22,7 +22,8 @@
     "gnoll": "^0.7.0-alpha.4",
     "gnoll-styles": "^0.6.0-1",
     "lerna": "^3.4.0",
-    "prettier": "^1.11.1"
+    "prettier": "^1.11.1",
+    "raw-loader": "^4.0.2"
   },
   "author": "sunflowerdeath",
   "license": "Unlicense",
