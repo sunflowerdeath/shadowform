@@ -6,7 +6,7 @@ imports:
 
 # Guildes / Values normalization
 
-Field can perform normalizated of the value before validation .
+Field can perform normalization of the value before validation.
 It can be useful for example for dates and numbers.
 
 In this example the field first checks that the date corresponds to the format,
@@ -26,4 +26,8 @@ lang: 'jsx'
 highlightLines: '14'
 ```
 
-[View example on github](https://github.com/sunflowerdeath/shadowform/tree/master/packages/docs/src/examples/NormalizationExample.js)
+[View full example code on github](https://github.com/sunflowerdeath/shadowform/tree/master/packages/docs/src/examples/NormalizationExample.js)
+
+<br>
+
+[Connected Fields →](/guides/connected-fields)

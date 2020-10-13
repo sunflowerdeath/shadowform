@@ -28,4 +28,8 @@ lang: 'jsx'
 highlightLines: '22'
 ```
 
-[View example on github](https://github.com/sunflowerdeath/shadowform/tree/master/packages/docs/src/examples/AsyncValidationExample.js)
+[View full example code on github](https://github.com/sunflowerdeath/shadowform/tree/master/packages/docs/src/examples/AsyncValidationExample.js)
+
+<br>
+
+[External Validation →](/guides/external-validation)

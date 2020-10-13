@@ -25,4 +25,4 @@ lang: 'jsx'
 highlightLines: '19, 26'
 ```
 
-[View example on github](https://github.com/sunflowerdeath/shadowform/tree/master/packages/docs/src/examples/ConnectedFieldsExample.js)
+[View full example code on github](https://github.com/sunflowerdeath/shadowform/tree/master/packages/docs/src/examples/ConnectedFieldsExample.js)

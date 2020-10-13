@@ -1,6 +1,6 @@
 import IntroductionStory from './Introduction.md'
 import ConfiguringErrorDisplayStory from './ConfiguringErrorDisplay.md'
-import SubmitValidationStory from './SubmitValidation.md'
+import ExternalValidationStory from './ExternalValidation.md'
 import AsyncValidationStory from './AsyncValidation.md'
 import ConnectedFieldsStory from './ConnectedFields.md'
 import NormalizationStory from './Normalization.md'
@@ -20,15 +20,15 @@ export default {
 			name: 'Async Validation',
 			markdown: AsyncValidationStory
 		},
-		'submit-validation': {
-			name: 'Submit Validation',
-			markdown: SubmitValidationStory
+		'external-validation': {
+			name: 'External Validation',
+			markdown: ExternalValidationStory
 		},
 		'value-normalization': {
-			name: 'Values normalization',
+			name: 'Values Normalization',
 			markdown: NormalizationStory
 		},
-		'cross-validation': {
+		'connected-fields': {
 			name: 'Connected Fields',
 			markdown: ConnectedFieldsStory
 		}

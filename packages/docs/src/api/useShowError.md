@@ -1,35 +1,40 @@
-# API / withShowError
+# API / useShowError
 
-`withShowError` is a decorator that wraps field component 
-and allows to configure displaying of errors.
+`useShowError` is a hook that allows to configure displaying of errors.
 
 ## Example
 
-Creating field component:
+Creating field component using the hook:
 
 ```
-import { withShowError } from 'shadowform'
+import { useShowError } from 'shadowform'
 
-const Field = ({ field, showError, onFocus, onBlur }) = {
+const Field = ({
+    field,
+    showRequiredError = 'onChange',
+    showValidationErrors = 'onChange'
+}) = {
+    const { showError, onFocus, onBlur } = useShowError({
+        field, showRequiredError, showValidationErrors
+    })
+
+    const error = !field.isValid && showError && <span className="error">{field.error}</span>
+
     // ...
 }
-
-const FieldWithShowError = withShowError(Field)
 ```
 
 Using component:
 
 ```
-<FieldWithShowError
+<Field
     field={someform.fields.somefield}
     showRequiredError='onChangeTouched'
     showValidationErrors='onBlur'
 />
 ```
 
-## Component props
-
-These props you can set on decorated component to configure how to show errors.
+## Hook options
 
 - **field**
 <br/>
@@ -62,27 +67,25 @@ Type: `FieldStore`
   Possible values are same as for `showRequiredError`.
   Also, you can configure display of each error type separately using an object.
 
-## Passed props
-
-These props are passed to the inner component.
+## Hook return value
 
 - **showError**
   <br/>
   Type: `boolean`
   
-  Whether the component should show current error according to the configuration.
+  Whether to show current error according to the options and current state of the field.
 
 - **onFocus**
   <br/>
   Type: `function`
   
-  Component need to call this function when field gets focus.
+  You need to call this function when field gets focus.
 
 - **onBlur**
   <br/>
   Type: `function`
   
-  Component need to call this function when field loses focus.
+  You need to call this function when field loses focus.
 
 - **isFocused**
   <br/>

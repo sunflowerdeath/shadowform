@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import React from 'react'
 import MiniBook from 'minibook'
 import 'minibook/lib/styles.css'
+// import { dark } from 'minibook/lib/themes'
 
 import ApiSection from './api'
 import GuidesSection from './guides'

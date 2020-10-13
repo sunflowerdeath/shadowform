@@ -1,12 +1,12 @@
 import FieldStoreStory from './FieldStore.md'
 import FormStoreStory from './FormStore.md'
-import WithShowErrorStory from './withShowError.md'
+import UseShowErrorStory from './useShowError.md'
 
 export default {
 	name: 'API',
 	stories: {
 		'field-store': { name: 'FieldStore', markdown: FieldStoreStory },
 		'form-store': { name: 'FormStore', markdown: FormStoreStory },
-		'with-show-error': { name: 'withShowError', markdown: WithShowErrorStory }
+		'use-show-error': { name: 'useShowError', markdown: UseShowErrorStory }
 	}
 }

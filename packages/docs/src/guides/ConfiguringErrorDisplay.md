@@ -55,21 +55,24 @@ But if you enter a space, the error will be displayed immediately.
 <UseShowErrorExample />
 ```
 
-This is how field component uses `withShowError`:
+This is how field component uses `useShowError`:
 
-<!-- ```@source -->
-<!-- file: '../examples/Field/index.js' -->
-<!-- tabs: 4 -->
-<!-- lang: 'jsx' -->
-<!-- highlightLines: '23' -->
-<!-- ``` -->
+```@source
+file: '../examples/Field/index.js'
+tabs: 4
+lang: 'jsx'
+highlightLines: '31'
+```
 
 This is how you can configure errors:
 
-<!-- ```@source -->
-<!-- file: '../examples/WithShowErrorExample.js' -->
-<!-- tabs: 4 -->
-<!-- lang: 'jsx' -->
-<!-- highlightLines: 21-22 -->
-<!-- ``` -->
+```@source
+file: '../examples/UseShowErrorExample.js'
+tabs: 4
+lang: 'jsx'
+highlightLines: 15-16
+```
 
+<br>
+
+[Async Validation →](/guides/async-validation)

@@ -6,16 +6,30 @@ imports:
 
 # Introduction
 
-Shadowform is library for creating forms using React and Mobx.
-The purpose of this library is to help create forms with good user experience
- with simple code.
+Shadowform is library for creating forms using React and 
+[MobX](https://mobx.js.org/README.html).
+The purpose of this library is to help create forms with good user experience and
+with simple code.
 
 ## Features
 
-- Flexible configuration of displaying errors
-- Sync and async validations
-- External and server-side validation
-- Values normalization
+- It allows you to configure when fields should display error, 
+  now when to perform the validation.
+  In Shadowform validation state always corresponds to the current values,
+  but sometimes you may want to not display error.
+  For example, empty required field is not valid, but you can configure it to 
+  not show error message initally, only if user has missed this field.
+
+- It uses [MobX](https://mobx.js.org/README.html) library, so it has very simple
+  and convenient API.
+  Also, this allows you to decide whether you want to put form's state into the store. 
+  If you don't &ndash; just use `useLocalObserver()` hook.
+
+- Supports sync and async validations
+
+- Supports external and server-side validation
+
+- Supports values normalization
 
 ## Example
 
@@ -45,11 +59,9 @@ lang: 'jsx'
 
 ### Result
 
-wtf
 ```@render
 <MinimalExample />
 ```
-wtf
 
 ### Field components
 
@@ -63,5 +75,9 @@ lang: 'jsx'
 ```
 
 This is minimal example of usage. In next sections you can learn how to
-use shadowform in more powerful way for more complex scenarios.
+use Shadowform in more powerful way for more complex scenarios.
+
+<br>
+
+[Configuring error display →](/guides/configuring-error-display)
 
