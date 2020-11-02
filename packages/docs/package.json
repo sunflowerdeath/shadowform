@@ -14,7 +14,6 @@
     "shadowform": "^0.2.0"
   },
   "devDependencies": {
-    "@babel/polyfill": "^7.0.0",
     "minimark-loader": "^0.7.0",
     "push-dir": "^0.4.1"
   },
