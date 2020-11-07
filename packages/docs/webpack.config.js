@@ -1,12 +1,11 @@
 const webpack = require('webpack')
 const baseConfig = require('gnoll/config/webpack')
 const babelConfig = require('gnoll/config/babel')
-const stylesConfig = require('gnoll-styles')
 const merge = require('webpack-merge')
 
 const PRODUCTION = process.env.NODE_ENV === 'production'
 
-module.exports = merge(baseConfig, stylesConfig, {
+module.exports = merge(baseConfig, {
 	output: {
 		publicPath: PRODUCTION ? 'https://sunflowerdeath.github.io/shadowform/' : '/'
 	},

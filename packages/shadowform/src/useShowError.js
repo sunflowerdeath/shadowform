@@ -3,9 +3,11 @@ import { useState, useEffect, useRef } from 'react'
 const shouldShowError = (props, state) => {
 	const { field, showValidationErrors, showRequiredError } = props
 	const { isValid, error } = field
-	const { isFocused, isTouched } = state
+	const { isFocused, isTouched, showError } = state
 
 	if (isValid) return false
+
+	if (showError) return true
 
 	const showMode = do {
 		if (error.type === 'external') {
@@ -30,33 +32,33 @@ const shouldShowError = (props, state) => {
 	}
 }
 
-const useLastValue = value => {
+const useLastValue = (value) => {
 	const ref = useRef(value)
 	if (ref.current !== value) ref.current = value
 	return () => ref.current
 }
 
-const useShowError = props => {
+const useShowError = (props) => {
 	const getProps = useLastValue(props)
 
 	const [state, setState] = useState({
 		isFocused: false,
 		isTouched: false,
-		showError: false
+		showError: false,
 	})
 
 	useEffect(
 		() => {
 			const unbindReset = props.field.on('reset', () =>
-				setState(currentState => ({
+				setState((currentState) => ({
 					...currentState,
-					isTouched: false
+					isTouched: false,
 				}))
 			)
 			const unbindValidate = props.field.on('validate', () => {
-				setState(currentState => ({
+				setState((currentState) => ({
 					...currentState,
-					showError: shouldShowError(getProps(), currentState)
+					showError: shouldShowError(getProps(), currentState),
 				}))
 			})
 			return () => {
@@ -72,19 +74,19 @@ const useShowError = props => {
 	})
 
 	const onFocus = () => {
-		setState(currentState => ({
+		setState((currentState) => ({
 			...currentState,
 			isFocused: true,
-			isTouched: true
+			isTouched: true,
 		}))
 	}
 
 	const onBlur = () => {
-		setState(currentState => {
+		setState((currentState) => {
 			const nextState = { ...currentState, isFocused: false }
 			return {
 				...currentState,
-				showError: shouldShowError(props, nextState)
+				showError: shouldShowError(props, nextState),
 			}
 		})
 	}

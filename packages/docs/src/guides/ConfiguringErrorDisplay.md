@@ -1,7 +1,6 @@
 ---
 imports:
   'UseShowErrorExample': '../examples/UseShowErrorExample'
-  'styles': '../examples/styles.css'
 ---
 
 # Guides / Configuring Error Display

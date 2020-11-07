@@ -1,7 +1,6 @@
 ---
 imports:
   'NormalizationExample': '../examples/NormalizationExample'
-  'styles': '../examples/styles.css'
 ---
 
 # Guildes / Values normalization

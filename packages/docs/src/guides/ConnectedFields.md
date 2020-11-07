@@ -1,7 +1,6 @@
 ---
 imports:
   'ConnectedFieldsExample': '../examples/ConnectedFieldsExample'
-  'styles': '../examples/styles.css'
 ---
 
 # Guides / Connected Fields

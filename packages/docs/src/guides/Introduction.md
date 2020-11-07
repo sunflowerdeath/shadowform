@@ -1,7 +1,6 @@
 ---
 imports:
   'MinimalExample': '../examples/MinimalExample'
-  'styles': '../examples/styles.css'
 ---
 
 # Introduction

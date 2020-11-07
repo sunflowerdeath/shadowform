@@ -1,7 +1,6 @@
 ---
 imports:
   'ExternalValidationExample': '../examples/ExternalValidationExample'
-  'styles': '../examples/styles.css'
 ---
 
 # Guides / External Validation

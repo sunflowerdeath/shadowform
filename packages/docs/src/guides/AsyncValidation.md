@@ -1,7 +1,6 @@
 ---
 imports:
   'AsyncValidationExample': '../examples/AsyncValidationExample'
-  'styles': '../examples/styles.css'
 ---
 
 # Guides / Async Validation
