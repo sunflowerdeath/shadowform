@@ -3,11 +3,9 @@ import { useState, useEffect, useRef } from 'react'
 const shouldShowError = (props, state) => {
 	const { field, showValidationErrors, showRequiredError } = props
 	const { isValid, error } = field
-	const { isFocused, isTouched, showError } = state
+	const { isFocused, isTouched } = state
 
 	if (isValid) return false
-
-	if (showError) return true
 
 	const showMode = do {
 		if (error.type === 'external') {
