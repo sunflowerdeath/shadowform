@@ -8,7 +8,7 @@ import MiniBook from 'minibook'
 import ApiSection from './api'
 import GuidesSection from './guides'
 
-const css = raw('./examples/styles.css')
+const css = raw('./styles.css')
 const style = document.createElement('style')
 style.type = 'text/css'
 style.appendChild(document.createTextNode(css))

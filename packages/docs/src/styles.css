@@ -82,9 +82,12 @@
 	cursor: pointer;
 	width: 24px;
 	height: 24px;
-	background: url('./Field/clear.svg');
 	top: 3px;
 	right: 3px;
+}
+
+.clear::before {
+    content: "X";
 }
 
 .error {
