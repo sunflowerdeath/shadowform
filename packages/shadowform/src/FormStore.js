@@ -15,14 +15,18 @@ class FormStore {
 				name,
 				...options,
 				initialValue: this.initialValues[name],
-				form: this
+				form: this,
 			})
 		}
 	}
 
+	get enabledFields() {
+		return pickBy(this.fields, (field) => !field.isDisabled)
+	}
+
 	get values() {
 		const result = {}
-		for (const [name, field] of Object.entries(this.fields)) {
+		for (const [name, field] of Object.entries(this.enabledFields)) {
 			result[name] = field.value
 		}
 		return result
@@ -30,20 +34,20 @@ class FormStore {
 
 	get normalizedValues() {
 		const result = {}
-		for (const [name, field] of Object.entries(this.fields)) {
+		for (const [name, field] of Object.entries(this.enabledFields)) {
 			result[name] = field.normalizedValue
 		}
 		return result
 	}
 
 	get isValid() {
-		return Object.values(this.fields).every(
-			field => field.isDisabled || (!field.isValidating && field.isValid)
+		return Object.values(this.enabledFields).every(
+			(field) => !field.isValidating && field.isValid
 		)
 	}
 
 	get isValidating() {
-		return Object.values(this.fields).some(field => field.isValidating)
+		return Object.values(this.enabledFields).some((field) => field.isValidating)
 	}
 
 	reset() {
