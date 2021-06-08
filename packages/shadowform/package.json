@@ -29,6 +29,7 @@
     "@babel/runtime": "^7.0.0",
     "lodash.debounce": "^4.0.8",
     "lodash.isequal": "^4.5.0",
+    "lodash.pickby": "^4.6.0",
     "nanoevents": "^1.0.2",
     "prop-types": "^15.6.1"
   },
