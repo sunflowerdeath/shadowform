@@ -1,12 +1,23 @@
 declare module "shadowform" {
 
+    type IValidationSync = {
+        error: string;
+        validate: (value: any, values: any) => boolean;
+    }
+    
+    type IValidationAsync = Omit<IValidationSync, keyof {
+        validate: never
+    }> & {
+        isAsync: true,
+        validate: (value: any, values: any) => Promise<boolean>;
+    };
+
+    type IValidation = IValidationSync | IValidationAsync;
+
     interface IField {
         normalize?: (value: any) => any;
         requiredError?: string;
-        validations?: Record<string, {
-            error: String;
-            validate: (value: any, values: any) => boolean;
-        }>;
+        validations?: Record<string, IValidation>;
         isRequired?: boolean;
         isEmpty?: boolean;
         initialValue?: any;
