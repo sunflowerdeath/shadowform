@@ -74,8 +74,8 @@ declare module "shadowform" {
 
     export function useShowError(args: {
         field: FieldStore;
-        showRequiredError: string;
-        showValidationErrors: string;
+        showRequiredError: string | any;
+        showValidationErrors: string | any;
     }): {
         showError: boolean;
         onFocus: (e: any) => void;
